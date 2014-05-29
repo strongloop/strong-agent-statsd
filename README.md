@@ -32,7 +32,7 @@ no options, but the following are allowed:
   
 Metrics names are hierarchical dot-seperated strings. When reported by statsd,
 they will most likely need to fit into a larger hierarchy of all the
-applications, or perhas an entire system or company.
+applications, or perhaps an entire system or company.
 
 Statsd servers usually have the ability to scope metrics reported to them, but
 if there are multiple clients reporting to the same server, or if the scope
