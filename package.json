@@ -1,0 +1,26 @@
+{
+  "name": "strong-agent-statsd",
+  "desription": "publish strong-agent metrics to statsd",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/strongloop/strong-agent-statsd.git"
+  },
+  "author": "engineering@strongloop.com",
+  "license": {
+    "name": "Dual MIT/StrongLoop",
+    "url": "https://github.com/strongloop/strong-agent-statsd/blob/master/LICENSE.md"
+  },
+  "readmeFilename": "README.md",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test.js"
+  },
+  "dependencies": {
+    "debug": "^0.8.1",
+    "lynx": "^0.1.1"
+  },
+  "devDependencies": {
+    "tap": "^0.4.9"
+  }
+}
