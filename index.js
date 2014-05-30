@@ -21,7 +21,7 @@ function Publisher(port, host, scope) {
 }
 
 Publisher.prototype.onError = function onError(er) {
-  debug('lynx error:', er.stack || er);
+  debug('transport error:', er.stack || er);
   this.emit('warn', er);
 };
 
@@ -33,6 +33,7 @@ var COUNTED = {
 };
 
 Publisher.prototype.publish = function publish(name, value) {
+  debug('metric %s=%s', name, value);
   if (COUNTED[name]) {
     this.stats.count(name, value);
     return
