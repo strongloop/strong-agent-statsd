@@ -4,16 +4,36 @@ Reports metrics from [strong-agent](https://www.npmjs.org/package/strong-agent)
 via statsd protocol, allowing publishing into on-premise or custom
 infrastructure.
 
-There are a number of statsd servers
-[extant](https://github.com/etsy/statsd/wiki#server-implementations). The
-original node [statsd](https://github.com/etsy/statsd) has a number
-of [backends](https://github.com/etsy/statsd/wiki/Backends) and contains
-a graphite backend internally.
+## Integration points
+
+There are a number of integration points where strong-agent metrics can be
+published into hosted or on-premise montitoring and reporting infrastructure.
+
+1. strong-agent metrics can be collected directly using the
+   `require('strong-agent').use()` API, the strong-agent-statsd
+   [source](https://github.com/strongloop/strong-agent-statsd) may be used as an
+   example.
+2. strong-agent-statsd can publish metrics using the statsd protocol to any
+   of a number of
+   [servers](https://github.com/etsy/statsd/wiki#server-implementations)
+   a. [statsd](https://github.com/etsy/statsd) is the original server, it has:
+       1. a built-in [graphite](http://graphite.wikidot.com/) backend, where
+       graphite might be local or [hosted](https://www.hostedgraphite.com/)
+       2. other [backends](https://github.com/etsy/statsd/wiki/Backends),
+       such as for Zabbix, etc.
+       3. support for custom backends, they are easy to write, one of the above
+       backends can be used as an example
+   b. other metrics consumers, such as
+   [datadog](http://docs.datadoghq.com/guides/basic_agent_usage/), have agents
+   that support the statsd-protocol
+3. strong-agent-statd can publish into a custom server written to support
+   existing on-premise infrastructure, the statsd
+   [protocol](https://github.com/b/statsd_spec) is quite simple.
 
 Most metrics reported by strong-agent are 'gauges', a measured value, but a few
 metrics are best reported as 'counts', values that count events. There are other
-[statsd data types](https://github.com/b/statsd_spec), but none are relevant to
-the metrics currently published by strong-agent.
+[statsd data types](https://github.com/b/statsd_spec#metric-types--formats), but
+none are relevant to the metrics currently published by strong-agent.
 
 This publisher uses the [lynx](https://www.npmjs.org/package/lynx) client.
 
@@ -47,24 +67,3 @@ Example integration with strong-agent:
       require('strong-agent-statsd')()
     );
 
-## Integration points
-
-There are a number of integration points where strong-agent metrics can be
-published into hosted or on-premise montitoring and reporting infrastructure.
-
-1. strong-agent metrics can be collected directly using the `.use()` API, the
-   strong-agent-statsd
-   [source](https://github.com/strongloop/strong-agent-statsd)
-   may be used as an example.
-2. strong-agent-statsd can publish metrics using the statsd protocol to a
-   server.
-3. statsd has a built-in [graphite](http://graphite.wikidot.com/) backend, where
-   graphite might be local or
-   [hosted](https://www.hostedgraphite.com/)
-4. statsd has other backends, they can be used to report to Zabbix, etc.
-5. [datadog](http://docs.datadoghq.com/guides/basic_agent_usage/), and others,
-   have statsd-protocol compatible servers for their reporting infrastructure
-6. statsd backends are simple to implement, existing ones can be used as
-   an example
-7. the statsd protocol is simple, a custom server can be written in a few
-   hundred lines
