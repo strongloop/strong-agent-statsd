@@ -1,0 +1,16 @@
+2014-06-02, Version 0.1.0
+
+* Remove non-existent "Messages" metric references (Sam Roberts)
+
+* docs: update README to be more cohesive (Sam Roberts)
+
+* Report metrics with a debug statement (Sam Roberts)
+
+* fixup! readme spelling (Sam Roberts)
+
+* publisher of strong-agent metrics to statsd (Sam Roberts)
+
+* docs: add README (Sam Roberts)
+
+* License and contribution agreement (Sam Roberts)
+
