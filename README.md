@@ -7,7 +7,7 @@ infrastructure.
 ## Integration points
 
 There are a number of integration points where strong-agent metrics can be
-published into hosted or on-premise montitoring and reporting infrastructure.
+published into hosted or on-premise monitoring and reporting infrastructure.
 
 1. strong-agent metrics can be collected directly using the
    `require('strong-agent').use()` API, the strong-agent-statsd
