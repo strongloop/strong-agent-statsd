@@ -16,14 +16,14 @@ published into hosted or on-premise monitoring and reporting infrastructure.
 2. strong-agent-statsd can publish metrics using the statsd protocol to any
    of a number of
    [servers](https://github.com/etsy/statsd/wiki#server-implementations)
-   a. [statsd](https://github.com/etsy/statsd) is the original server, it has:
+   1. [statsd](https://github.com/etsy/statsd) is the original server, it has:
        1. a built-in [graphite](http://graphite.wikidot.com/) backend, where
        graphite might be local or [hosted](https://www.hostedgraphite.com/)
        2. other [backends](https://github.com/etsy/statsd/wiki/Backends),
        such as for Zabbix, etc.
        3. support for custom backends, they are easy to write, one of the above
        backends can be used as an example
-   b. other metrics consumers, such as
+   2. other metrics consumers, such as
    [datadog](http://docs.datadoghq.com/guides/basic_agent_usage/), have agents
    that support the statsd-protocol
 3. strong-agent-statd can publish into a custom server written to support
