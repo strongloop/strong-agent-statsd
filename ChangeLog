@@ -1,3 +1,14 @@
+2014-06-11, Version 0.1.1
+
+* Support messages.in/out.count as count type (Sam Roberts)
+
+* Describe this module as 'middleware' in README (Sam Roberts)
+
+* readme: fix markdown numbering of lists (Sam Roberts)
+
+* Fix typo (Rand McKinney)
+
+
 2014-06-02, Version 0.1.0
 
 * Remove non-existent "Messages" metric references (Sam Roberts)
