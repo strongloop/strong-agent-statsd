@@ -1,8 +1,10 @@
 # strong-agent-statsd
 
-Reports metrics from [strong-agent](https://www.npmjs.org/package/strong-agent)
-via statsd protocol, allowing publishing into on-premise or custom
-infrastructure.
+[strong-agent](https://www.npmjs.org/package/strong-agent) middleware for
+publishing metrics via statsd protocol.
+
+The statsd protocol is supported by large ecosystem of servers and plugins,
+allowing publishing into on-premise or custom infrastructure.
 
 ## Integration points
 
