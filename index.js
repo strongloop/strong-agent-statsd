@@ -28,6 +28,8 @@ Publisher.prototype.onError = function onError(er) {
 // Report all metrics as 'gauge', unless specifically configured to be a count.
 var COUNTED = {
   'loop.count': true,
+  'messages.in.count': true,
+  'messages.out.count': true,
 };
 
 Publisher.prototype.publish = function publish(name, value) {
