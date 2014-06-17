@@ -1,7 +1,7 @@
 {
   "name": "strong-agent-statsd",
-  "desription": "publish strong-agent metrics to statsd",
-  "version": "0.1.1",
+  "desription": "strong-agent middleware to publish metrics to statsd",
+  "version": "0.1.2",
   "repository": {
     "type": "git",
     "url": "git://github.com/strongloop/strong-agent-statsd.git"
