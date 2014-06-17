@@ -40,10 +40,12 @@ function test() {
   write('loop.count', 100, 'c');
   write('loop.something', 5.99, 'g');
   write('loop.count', 50, 'c');
+  write('object.String.count', -10, 'c');
+  write('object.String.size', -1029, 'g');
 }
 
 function checkIfPassed() {
-  if (reported.length < 3) {
+  if (reported.length < expected.length) {
     console.log('waiting for more reports...');
     return;
   }
