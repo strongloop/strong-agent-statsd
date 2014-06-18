@@ -25,16 +25,12 @@ Publisher.prototype.onError = function onError(er) {
   this.emit('warn', er);
 };
 
-// Report all metrics as 'gauge', unless specifically configured to be a count.
-var COUNTED = {
-  'loop.count': true,
-  'messages.in.count': true,
-  'messages.out.count': true,
-};
+// Report all metrics as 'gauge', unless last component of name is '.count'.
+var COUNTED = /\.count$/;
 
 Publisher.prototype.publish = function publish(name, value) {
   debug('metric %s=%s', name, value);
-  if (COUNTED[name]) {
+  if (COUNTED.test(name)) {
     this.stats.count(name, value);
     return
   }

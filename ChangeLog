@@ -1,3 +1,8 @@
+2014-06-17, Version 0.1.2
+
+* Report all metrics ending in '.count. as counts (Sam Roberts)
+
+
 2014-06-11, Version 0.1.1
 
 * Support messages.in/out.count as count type (Sam Roberts)
