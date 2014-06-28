@@ -32,6 +32,8 @@ function listening(er) {
 function test() {
   var publish = statsd({port: port});
 
+  assert.equal(publish.publisher.port, port);
+
   function write(name, value, type) {
     expected.push(util.format('%s:%d|%s', name, value, type));
     publish(name, value);
