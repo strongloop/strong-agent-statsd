@@ -34,6 +34,8 @@ function test() {
 
   assert.equal(publish.publisher.port, port);
 
+  publish.publisher.emit('you are an emitter');
+
   function write(name, value, type) {
     expected.push(util.format('%s:%d|%s', name, value, type));
     publish(name, value);
