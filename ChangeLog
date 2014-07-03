@@ -1,3 +1,12 @@
+2014-07-02, Version 0.1.3
+
+* Fix Publisher, which should be an EventEmitter (Sam Roberts)
+
+* Expose publisher as a middleware attribute (Sam Roberts)
+
+* doc: remove markdown from package summary (Sam Roberts)
+
+
 2014-06-17, Version 0.1.2
 
 * Report all metrics ending in '.count. as counts (Sam Roberts)

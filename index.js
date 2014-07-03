@@ -1,13 +1,20 @@
 var debug = require('debug')('strong-agent-statsd');
+var util = require('util');
+var EventEmitter = require('events').EventEmitter;
 var Lynx = require('lynx');
 
 module.exports = function (options) {
   options = options || {};
   var publisher = new Publisher(options.port, options.host, options.scope);
 
-  return function publish(name, value) {
+  function publish(name, value) {
     publisher.publish(name, value);
   };
+
+  // Attach publisher to middleware so 'warn' event can be listened on.
+  publish.publisher = publisher;
+
+  return publish;
 };
 
 function Publisher(port, host, scope) {
@@ -19,6 +26,8 @@ function Publisher(port, host, scope) {
     on_error: this.onError.bind(this),
   });
 }
+
+util.inherits(Publisher, EventEmitter);
 
 Publisher.prototype.onError = function onError(er) {
   debug('transport error:', er.stack || er);
