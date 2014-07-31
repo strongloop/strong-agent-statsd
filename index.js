@@ -46,6 +46,7 @@ function Publisher(port, host, scope) {
   this.stats = new Lynx(this.host, this.port, {
     scope: this.scope,
     on_error: this.onError.bind(this),
+    socket: this.socket,
   });
 }
 
