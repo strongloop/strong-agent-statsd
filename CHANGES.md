@@ -1,3 +1,13 @@
+2014-07-31, Version 0.1.4
+=========================
+
+ * fixup! actually pass socket to lynx (Sam Roberts)
+
+ * Work-around node cluster bugs with dgram.send() (Sam Roberts)
+
+ * Update package license to match LICENSE.md (Sam Roberts)
+
+
 2014-07-02, Version 0.1.3
 
 * Fix Publisher, which should be an EventEmitter (Sam Roberts)
