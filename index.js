@@ -1,4 +1,5 @@
 var debug = require('debug')('strong-agent-statsd');
+var dgram = require('dgram');
 var util = require('util');
 var EventEmitter = require('events').EventEmitter;
 var Lynx = require('lynx');
@@ -18,12 +19,34 @@ module.exports = function (options) {
 };
 
 function Publisher(port, host, scope) {
+  var self = this;
+
   this.port = port;
   this.host = host;
   this.scope = scope;
+
+  // Lynx creates a new UDP socket if it isn't used for 1 second. This has
+  // two problems:
+  // 1. It forces sockets to be created every time we use one.
+  // 2. It tickles a bug in v0.11 cluster causing the master to assert.
+  // Work around this by creating the socket once, which Lynx supports.
+  // Also, emulate Lynx's error handling, which it does only for its own
+  // created sockets.
+  this.socket = dgram.createSocket('udp4');
+  this.socket.unref();
+  this.socket.on('error', function (err) {
+    err.reason  = err.message;
+    err.f       = 'send';
+    err.message = 'Failed sending the buffer';
+    err.args    = arguments;
+    self.onError(err);
+    return;
+  });
+
   this.stats = new Lynx(this.host, this.port, {
     scope: this.scope,
     on_error: this.onError.bind(this),
+    socket: this.socket,
   });
 }
 
