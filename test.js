@@ -41,11 +41,16 @@ function test() {
     publish(name, value);
   }
 
+  // count are counts, timers are timers, and stats that don't END in count or
+  // timer are gauges
   write('loop.count', 100, 'c');
   write('loop.something', 5.99, 'g');
   write('loop.count', 50, 'c');
+  write('loop.timer', 50, 'ms');
   write('object.String.count', -10, 'c');
   write('object.String.size', -1029, 'g');
+  write('loop.count.x', 150, 'g');
+  write('loop.timer.y', 150, 'g');
 }
 
 function checkIfPassed() {
@@ -55,7 +60,10 @@ function checkIfPassed() {
   }
   console.log('reported:', reported);
   console.log('expected:', expected);
-  assert.deepEqual(reported, expected);
+  assert.equal(reported.length, expected.length);
+  for (var i = 0; i < reported.length; i++) {
+    assert.deepEqual(reported[i], expected[i], 'at idx ' + i);
+  }
 
   ok = true;
   server.close();
