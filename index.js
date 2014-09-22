@@ -59,12 +59,15 @@ Publisher.prototype.onError = function onError(er) {
 
 // Report all metrics as 'gauge', unless last component of name is '.count'.
 var COUNTED = /\.count$/;
+var TIMER = /\.timer$/;
 
 Publisher.prototype.publish = function publish(name, value) {
   debug('metric %s=%s', name, value);
   if (COUNTED.test(name)) {
     this.stats.count(name, value);
-    return
+  } else if(TIMER.test(name)) {
+    this.stats.timing(name, value);
+  } else {
+    this.stats.gauge(name, value);
   }
-  this.stats.gauge(name, value);
 };

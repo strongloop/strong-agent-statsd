@@ -1,3 +1,9 @@
+2014-09-22, Version 1.0.0
+=========================
+
+ * Publish stats ending in '.timer' as milliseconds (Sam Roberts)
+
+
 2014-07-31, Version 0.1.4
 =========================
 
