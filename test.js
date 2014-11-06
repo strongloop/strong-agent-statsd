@@ -37,7 +37,12 @@ function test() {
   publish.publisher.emit('you are an emitter');
 
   function write(name, value, type) {
-    expected.push(util.format('%s:%d|%s', name, value, type));
+    var zero = '';
+    if (value < 0 && type === 'g') {
+      // Expect the negative-gauge workaround.
+      zero = util.format('%s:%d|%s\n', name, 0, type);
+    }
+    expected.push(zero + util.format('%s:%d|%s', name, value, type));
     publish(name, value);
   }
 

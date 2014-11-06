@@ -68,6 +68,35 @@ Publisher.prototype.publish = function publish(name, value) {
   } else if(TIMER.test(name)) {
     this.stats.timing(name, value);
   } else {
-    this.stats.gauge(name, value);
+    // Work around a well-known (if you read the right docs) statsd protocol
+    // peculiarity. If a gauge value starts with a + or a -, it is accumulated
+    // with last value. This is fine for positive numbers, but it means there is
+    // no way to represent an absolute negative value, it will always be
+    // interpreted as relative to the last value.
+    //
+    // Note that we can't send a 0 then send the value with lynx, the two values
+    // will be sent in different UDP packets, and they can get lost or
+    // reordered.  Even on localhost, loss is unlikely, but reorder has been
+    // observed.
+    if (value < 0) {
+      return this._send([
+        [name, 0, 'g'],
+        [name, value, 'g'],
+      ]);
+    }
+    return this._send([
+      [name, value, 'g'],
+    ]);
   }
+};
+
+// Lynx doesn't support multiple metrics in a single packet if they have the
+// same name.
+Publisher.prototype._send = function publish(metrics) {
+  var self = this.stats;
+  var str = metrics.map(function(m) {
+    return self.scope + m[0] + ':' + m[1] + '|' + m[2];
+  }).join('\n');
+  var buf = new Buffer(str, 'utf8');
+  self.socket.send(buf, 0, buf.length, self.port, self.host, function(){});
 };
