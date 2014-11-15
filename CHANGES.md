@@ -1,3 +1,9 @@
+2014-11-15, Version 1.0.2
+=========================
+
+ * statsd: negative gauges require special handling (Sam Roberts)
+
+
 2014-10-02, Version 1.0.1
 =========================
 
@@ -20,44 +26,53 @@
  * Update package license to match LICENSE.md (Sam Roberts)
 
 
-2014-07-02, Version 0.1.3
+2014-07-03, Version 0.1.3
+=========================
 
-* Fix Publisher, which should be an EventEmitter (Sam Roberts)
+ * Fix Publisher, which should be an EventEmitter (Sam Roberts)
 
-* Expose publisher as a middleware attribute (Sam Roberts)
+ * Expose publisher as a middleware attribute (Sam Roberts)
 
-* doc: remove markdown from package summary (Sam Roberts)
+ * doc: remove markdown from package summary (Sam Roberts)
 
 
 2014-06-17, Version 0.1.2
+=========================
 
-* Report all metrics ending in '.count. as counts (Sam Roberts)
+ * Report all metrics ending in '.count. as counts (Sam Roberts)
 
 
 2014-06-11, Version 0.1.1
+=========================
 
-* Support messages.in/out.count as count type (Sam Roberts)
+ * Support messages.in/out.count as count type (Sam Roberts)
 
-* Describe this module as 'middleware' in README (Sam Roberts)
+ * Describe this module as 'middleware' in README (Sam Roberts)
 
-* readme: fix markdown numbering of lists (Sam Roberts)
+ * readme: fix markdown numbering of lists (Sam Roberts)
 
-* Fix typo (Rand McKinney)
+ * Fix typo (Rand McKinney)
 
 
 2014-06-02, Version 0.1.0
+=========================
 
-* Remove non-existent "Messages" metric references (Sam Roberts)
+ * Remove non-existent "Messages" metric references (Sam Roberts)
 
-* docs: update README to be more cohesive (Sam Roberts)
+ * docs: update README to be more cohesive (Sam Roberts)
 
-* Report metrics with a debug statement (Sam Roberts)
+ * Report metrics with a debug statement (Sam Roberts)
 
-* fixup! readme spelling (Sam Roberts)
+ * fixup! readme spelling (Sam Roberts)
 
-* publisher of strong-agent metrics to statsd (Sam Roberts)
+ * publisher of strong-agent metrics to statsd (Sam Roberts)
 
-* docs: add README (Sam Roberts)
+ * docs: add README (Sam Roberts)
 
-* License and contribution agreement (Sam Roberts)
+ * License and contribution agreement (Sam Roberts)
 
+
+2014-05-28, Version INITIAL
+===========================
+
+ * First release!
