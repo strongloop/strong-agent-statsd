@@ -1,5 +1,6 @@
 var debug = require('debug')('strong-agent-statsd');
 var dgram = require('dgram');
+var semver = require('semver');
 var util = require('util');
 var EventEmitter = require('events').EventEmitter;
 var Lynx = require('lynx');
@@ -42,6 +43,14 @@ function Publisher(port, host, scope) {
     self.onError(err);
     return;
   });
+
+  // Exclusive means the dgram socket is not shared with other cluster workers.
+  // This is ideal for dgram client sockets, and should be the default, see
+  // joyent/node#8643. However, until it is, explicitly make this bind
+  // exclusive, if possible. Exclusive binds were added in node 0.11.14.
+  if (semver.gte(process.version, '0.11.14')) {
+    this.socket.bind({port: 0, exclusive: true});
+  }
 
   this.stats = new Lynx(this.host, this.port, {
     scope: this.scope,
