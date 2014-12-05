@@ -1,4 +1,10 @@
-2014-11-15, Version 1.0.2
+2014-12-05, Version 1.0.3
+=========================
+
+ * Support Windows on node >= 0.11.14 (Sam Roberts)
+
+
+2014-11-14, Version 1.0.2
 =========================
 
  * statsd: negative gauges require special handling (Sam Roberts)
