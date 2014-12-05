@@ -1,7 +1,11 @@
 var assert = require('assert');
+var cluster = require('cluster');
 var dgram = require('dgram');
+var semver = require('semver');
 var statsd = require('./');
 var util = require('util');
+
+console.log('start test');
 
 var server = dgram.createSocket('udp4');
 var port;
@@ -20,7 +24,12 @@ server.on('message', function(data) {
   checkIfPassed();
 });
 
-server.bind(listening);
+if (semver.gte(process.version, '0.11.14')) {
+  console.log('exclusive bind');
+  server.bind({port: 0, exclusive: true}, listening);
+} else {
+  server.bind(listening);
+}
 
 function listening(er) {
   console.log('listening:', er || server.address());
@@ -72,4 +81,5 @@ function checkIfPassed() {
 
   ok = true;
   server.close();
+  if (cluster.isWorker) process.disconnect();
 }
