@@ -1,3 +1,8 @@
+// Copyright IBM Corp. 2014. All Rights Reserved.
+// Node module: strong-agent-statsd
+// This file is licensed under the Artistic License 2.0.
+// License text available at https://opensource.org/licenses/Artistic-2.0
+
 var debug = require('debug')('strong-agent-statsd');
 var dgram = require('dgram');
 var semver = require('semver');
