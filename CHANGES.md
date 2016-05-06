@@ -1,4 +1,14 @@
-2015-01-13, Version 1.0.5
+2016-05-06, Version 1.0.6
+=========================
+
+ * update copyright notices and license (Ryan Graham)
+
+ * Refer to licenses with a link (Sam Roberts)
+
+ * Use strongloop conventions for licensing (Sam Roberts)
+
+
+2015-01-12, Version 1.0.5
 =========================
 
  * Fix bad CLA URL in CONTRIBUTING.md (Ryan Graham)
